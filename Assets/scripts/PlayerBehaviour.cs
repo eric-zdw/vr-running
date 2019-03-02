@@ -11,6 +11,7 @@ public class PlayerBehaviour : MonoBehaviour
     public float velocityMultiplier;
     public float directionMultiplier;
     public float tiltMultiplier;
+    public float heartrategap;  //variable that should represent how far above initial heartrate player is. Should modify to ensure reasonable speed increase
 
 
     // Start is called before the first frame update
@@ -28,20 +29,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     void GainVelocity()
     {
-        if (GvrControllerInput.ClickButton) 
+        if (Input.anyKey)   //REPLACE THIS with vr controller motion 
             velocityInput = 1; 
         else 
             velocityInput = 0;
-        //velocityInput = Input.GetAxis("Vertical");
-        //directionInput = Input.GetAxis("Horizontal");
-        
-        //playermodel.transform.eulerAngles = new Vector3(playermodel.transform.eulerAngles.x,
-        //                                                playermodel.transform.eulerAngles.y,
-        //                                                -directionInput * tiltMultiplier);
-        
-        //transform.GetComponent<Rigidbody>().angularVelocity += new Vector3(0, directionInput * Time.deltaTime * directionMultiplier, 0);
+
         transform.localRotation = GvrControllerInput.Orientation;
 
-        transform.GetComponent<Rigidbody>().velocity += transform.TransformDirection(new Vector3(0, 0, velocityInput)) * Time.deltaTime * velocityMultiplier;
+        transform.GetComponent<Rigidbody>().velocity += (transform.TransformDirection(new Vector3(0, 0, velocityInput)) * Time.deltaTime * velocityMultiplier) + (transform.TransformDirection(new Vector3(0, 0, heartrategap)) * Time.deltaTime * velocityInput);
     }
 }
