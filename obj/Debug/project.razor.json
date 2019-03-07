@@ -1,6 +1,6 @@
 {
-  "ProjectFilePath": "c:\\Users\\Eric\\Documents\\vr-running\\Assembly-CSharp-Editor.csproj",
-  "TargetFramework": "v4.5",
+  "ProjectFilePath": "c:\\Users\\Eric\\Documents\\vr-running\\Assembly-CSharp.csproj",
+  "TargetFramework": "v4.7.1",
   "TagHelpers": [],
   "Configuration": {
     "ConfigurationName": "UnsupportedRazor",

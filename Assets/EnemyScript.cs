@@ -30,7 +30,7 @@ public class EnemyScript : MonoBehaviour
     {
         velocityInput = 1;
 
-        transform.localRotation = GvrControllerInput.Orientation;
+        //transform.localRotation = GvrControllerInput.Orientation;
 
         transform.GetComponent<Rigidbody>().velocity += transform.TransformDirection(new Vector3(0, 0, velocityInput)) * Time.deltaTime * velocityMultiplier;
     }

@@ -11,16 +11,25 @@ public class CameraRig : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
-        
+        // test OpenVR controller detection
+        StartCoroutine(CheckControllers());
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+
         Vector3 newPosition = target.transform.position 
                             - target.transform.TransformDirection(Vector3.forward) * followDistance
                             + Vector3.up * followHeight;
         transform.position = newPosition;
         transform.LookAt(target.transform);
+    }
+
+    IEnumerator CheckControllers() {
+        while (true) {
+            print(UnityEngine.Input.GetJoystickNames());
+            yield return new WaitForSeconds(5f);
+        }
     }
 }
