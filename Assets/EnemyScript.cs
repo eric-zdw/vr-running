@@ -12,6 +12,8 @@ public class EnemyScript : MonoBehaviour
     public float directionMultiplier;
     public float tiltMultiplier;
 
+    public GameObject explosion;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +41,9 @@ public class EnemyScript : MonoBehaviour
     {
         if (col.gameObject.name == "Player")
         {
-            SceneManager.LoadScene("gameMenu");
+            Instantiate(explosion, col.gameObject.transform.position, Quaternion.identity);
+            GameObject.Destroy(col.gameObject);
+            //SceneManager.LoadScene("gameMenu");
         }
     }
 }
