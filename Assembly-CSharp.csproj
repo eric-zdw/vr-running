@@ -53,7 +53,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ControllerInfo.cs" />
      <Compile Include="Assets\EnemyScript.cs" />
      <Compile Include="Assets\scripts\CameraRig.cs" />
      <Compile Include="Assets\scripts\DebugPanel.cs" />
@@ -639,6 +638,8 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="SteamVR_Actions.csproj">
+      <Project>{E6E52CFC-F760-6DB6-CD50-F36F3F2C7574}</Project>      <Name>SteamVR_Actions</Name>    </ProjectReference>
     <ProjectReference Include="SteamVR_Input_Editor.csproj">
       <Project>{A6671E3B-AB3C-88B9-81DF-0B481B87BA8D}</Project>      <Name>SteamVR_Input_Editor</Name>    </ProjectReference>
     <ProjectReference Include="SteamVR_Editor.csproj">
@@ -647,8 +648,6 @@
       <Project>{83FC129B-9C68-11DF-FC61-2A2B4100C603}</Project>      <Name>SteamVR</Name>    </ProjectReference>
     <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
       <Project>{0CC07E12-97AC-FBE8-A905-E1CDA5A83B56}</Project>      <Name>SteamVR_Windows_EditorHelper</Name>    </ProjectReference>
-    <ProjectReference Include="SteamVR_Actions.csproj">
-      <Project>{E6E52CFC-F760-6DB6-CD50-F36F3F2C7574}</Project>      <Name>SteamVR_Actions</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
