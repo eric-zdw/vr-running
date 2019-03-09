@@ -10,6 +10,7 @@ public class CameraRig : MonoBehaviour {
     public Vector3 rotationOffset;
     private string[] controllerList;
     private bool controllerFound = false;
+    public float smoothnessFactor = 0.5f;
     
 
     // Start is called before the first frame update
@@ -27,7 +28,8 @@ public class CameraRig : MonoBehaviour {
         Vector3 newPosition = target.transform.position 
                             - target.transform.TransformDirection(Vector3.forward) * followDistance
                             + Vector3.up * followHeight;
-        transform.position = newPosition;
+        transform.position = Vector3.Lerp(transform.position, newPosition, smoothnessFactor);
+        //transform.position = newPosition;
 
         // Enable if you want camera tilt.
         //transform.LookAt(target.transform);
