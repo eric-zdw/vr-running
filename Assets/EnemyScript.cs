@@ -18,7 +18,6 @@ public class EnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -34,15 +33,15 @@ public class EnemyScript : MonoBehaviour
 
         //transform.localRotation = GvrControllerInput.Orientation;
 
-        transform.GetComponent<Rigidbody>().velocity += transform.TransformDirection(new Vector3(0, 0, velocityInput)) * Time.deltaTime * velocityMultiplier;
+        transform.GetComponent<Rigidbody>().AddForce(transform.TransformDirection(new Vector3(0, 0, velocityInput)) * Time.deltaTime * velocityMultiplier);
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider other)
     {
-        if (col.gameObject.name == "Player")
+        if (other.gameObject.name == "Player")
         {
-            Instantiate(explosion, col.gameObject.transform.position, Quaternion.identity);
-            GameObject.Destroy(col.gameObject);
+            Instantiate(explosion, other.gameObject.transform.position, Quaternion.identity);
+            GameObject.Destroy(other.gameObject);
             //SceneManager.LoadScene("gameMenu");
         }
     }
