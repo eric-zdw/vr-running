@@ -8,6 +8,9 @@ public class CameraRig : MonoBehaviour {
     public float followDistance;
     public float followHeight;
     public Vector3 rotationOffset;
+    private string[] controllerList;
+    private bool controllerFound = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +35,12 @@ public class CameraRig : MonoBehaviour {
 
     IEnumerator CheckControllers() {
         while (true) {
-            print(UnityEngine.Input.GetJoystickNames());
-            yield return new WaitForSeconds(5f);
+            print("testing...");
+            controllerList = UnityEngine.Input.GetJoystickNames();
+            for (int i = 0; i < controllerList.Length; i++) {
+                print(controllerList[i]);
+            }
+            yield return new WaitForSeconds(1f);
         }
     }
 }
