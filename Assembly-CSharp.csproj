@@ -53,12 +53,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Cleanup.cs" />
      <Compile Include="Assets\ControllerPointer.cs" />
      <Compile Include="Assets\DistanceMeter.cs" />
      <Compile Include="Assets\EnemyScript.cs" />
      <Compile Include="Assets\scripts\CameraRig.cs" />
      <Compile Include="Assets\scripts\DebugPanel.cs" />
      <Compile Include="Assets\scripts\PlayerBehaviour.cs" />
+     <Compile Include="Assets\TrackGenerator.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/Eric/Documents/vr-running/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
