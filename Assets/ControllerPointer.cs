@@ -9,6 +9,7 @@ public class ControllerPointer : MonoBehaviour
     private UnityEngine.UI.Button button;
     private int layerMask;
     public GameObject pointerEnd;
+
     private Valve.VR.SteamVR_Action_Boolean isInteracting;
 
     // Start is called before the first frame update
@@ -35,7 +36,7 @@ public class ControllerPointer : MonoBehaviour
 
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, 100f, layerMask)) {
-            print("Hit object: " + hit.collider.gameObject.tag);
+            //print("Hit object: " + hit.collider.gameObject.tag);
             lineRenderer.SetPosition(1, hit.point);
 
             if (hit.collider.gameObject.tag == "PlayButton") {
@@ -60,7 +61,7 @@ public class ControllerPointer : MonoBehaviour
         if (isInteracting.lastStateUp == true)
             pointerEnd.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
-        
+        GetControllerVelocity();
     }
 
     void CheckButton() {
@@ -69,5 +70,10 @@ public class ControllerPointer : MonoBehaviour
                 UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             }
         }
+    }
+
+
+    void GetControllerVelocity() {
+        print("controller velocity: " + transform);
     }
 }

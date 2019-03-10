@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayButton
   - Panel
+  - PlayerModel
   layers:
   - Default
   - TransparentFX
