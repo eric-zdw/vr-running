@@ -9,6 +9,7 @@ public class ControllerPointer : MonoBehaviour
     private UnityEngine.UI.Button button;
     private int layerMask;
     public GameObject pointerEnd;
+    private Valve.VR.SteamVR_Action_Boolean isInteracting;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,8 @@ public class ControllerPointer : MonoBehaviour
         // set a mask so the controller ray doesn't detect the player controller.
         // PlayerController layer is layer 9.
         layerMask = ~(1 << 9);
+
+        isInteracting = Valve.VR.SteamVR_Input.GetBooleanAction("default", "InteractUI");
     }
 
     // Update is called once per frame
@@ -48,5 +51,20 @@ public class ControllerPointer : MonoBehaviour
         }
 
         pointerEnd.transform.position = lineRenderer.GetPosition(1);
+
+        if (isInteracting.lastState == true) {
+            pointerEnd.transform.localScale = new Vector3(5f, 5f, 5f);
+            CheckButton();
+        }
+        else
+            pointerEnd.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    void CheckButton() {
+        if (button != null) {
+            if (button.tag == "PlayButton") {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            }
+        }
     }
 }
