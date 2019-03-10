@@ -52,12 +52,15 @@ public class ControllerPointer : MonoBehaviour
 
         pointerEnd.transform.position = lineRenderer.GetPosition(1);
 
-        if (isInteracting.lastState == true) {
-            pointerEnd.transform.localScale = new Vector3(5f, 5f, 5f);
+        if (isInteracting.lastStateDown == true) {
+            pointerEnd.transform.localScale = new Vector3(1f, 1f, 1f);
             CheckButton();
         }
-        else
-            pointerEnd.transform.localScale = new Vector3(1f, 1f, 1f);
+        
+        if (isInteracting.lastStateUp == true)
+            pointerEnd.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+        
     }
 
     void CheckButton() {
