@@ -6,10 +6,12 @@ public class PlayerBehaviour : MonoBehaviour
 {
 
     public GameObject playermodel;
+    private GameManagerScript managerscript;
     public float velocityInput;
     public float directionInput;
     public float velocityMultiplier;
     public float directionMultiplier;
+    public float heartrateMultiplier;
     public float tiltMultiplier;
     public float heartrategap;  //variable that should represent how far above initial heartrate player is. Should modify to ensure reasonable speed increase
 
@@ -17,12 +19,16 @@ public class PlayerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        managerscript = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        heartrategap = managerscript.currentRate - managerscript.initialRate;
+        if (heartrategap < 0)
+            heartrategap = 0;
+
         GainVelocity();
 
     }
@@ -36,6 +42,6 @@ public class PlayerBehaviour : MonoBehaviour
 
         //transform.localRotation = GvrControllerInput.Orientation;
 
-        transform.GetComponent<Rigidbody>().velocity += (transform.TransformDirection(new Vector3(0, 0, velocityInput)) * Time.deltaTime * velocityMultiplier) + (transform.TransformDirection(new Vector3(0, 0, heartrategap)) * Time.deltaTime * velocityInput);
+        transform.GetComponent<Rigidbody>().velocity += (transform.TransformDirection(new Vector3(0, 0, velocityInput)) * Time.deltaTime * velocityMultiplier) + (transform.TransformDirection(new Vector3(0, 0, heartrategap)) * Time.deltaTime * velocityInput * heartrateMultiplier);
     }
 }
