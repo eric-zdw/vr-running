@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 308825647}
   - component: {fileID: 308825646}
   - component: {fileID: 308825651}
+  - component: {fileID: 308825652}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -286,7 +287,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.5, y: 1.5, z: -3.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1317825376}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -305,6 +307,20 @@ MonoBehaviour:
   rb: {fileID: 308825646}
   forwardForce: 2000
   sidewayForce: 500
+--- !u!114 &308825652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308825645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde31d06a13a375409895c17a4435eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 2103153408}
+  rb: {fileID: 308825646}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,8 +523,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783962e619365454b951b1c30377591d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointPrefab: {fileID: 0}
-  resolution: 10
+  pointPrefab: {fileID: 1580283854}
+  resolution: 22
 --- !u!4 &762807558
 Transform:
   m_ObjectHideFlags: 0
@@ -623,7 +639,7 @@ Transform:
   m_GameObject: {fileID: 948170934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 39.38}
-  m_LocalScale: {x: 15, y: 1, z: 50000}
+  m_LocalScale: {x: 15, y: 1, z: 500000}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -719,8 +735,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 2103153406}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 308825650}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -754,7 +770,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580283853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 2, y: -4.9, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -929,12 +945,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103153405}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fde31d06a13a375409895c17a4435eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 2103153408}
+  rb: {fileID: 308825646}
 --- !u!114 &2103153408
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Graph : MonoBehaviour
 {
     public Transform pointPrefab;
     [Range(10, 100)]
     public int resolution = 10;
     Transform[] points;
+
     void Awake ()
     {
         float step = 2f / resolution;
@@ -32,12 +32,18 @@ public class Graph : MonoBehaviour
 
     void Update()
     {
-        for (int i = 0; i < points.Length; i++)
-        {
-            Transform point = points[i];
-            Vector3 position = point.localPosition;
-            position.y = Mathf.Sin(Mathf.PI * (position.x + Time.time));
-            point.localPosition = position;
+
+                for (int i = 0; i < points.Length; i++)
+                {
+                    Transform point = points[i];
+                    Vector3 position = point.localPosition;
+
+                 
+
+                    position.y = Mathf.Sin(Mathf.PI * (position.x + Time.time));
+                    point.localPosition = position;
+                }
+            }
+
         }
-    }
-}
+  
