@@ -34,7 +34,7 @@ public class GameManagerScript : MonoBehaviour
                 try
                 {
                     oldInitialRate = initialRate;
-                initialRate = int.Parse(sp.ReadLine());
+               // initialRate = int.Parse(sp.ReadLine());
                     if (((initialRate - oldInitialRate) > 10) || ((oldInitialRate - initialRate) > 10) || initialRate < 30 || initialRate > 120)  //check both for inconsistency and invalidity in heartrate
                     {
                         timer = 0;
