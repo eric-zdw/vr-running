@@ -38,7 +38,7 @@ public class EnemyScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.name == "PlayerPlane")
         {
             Instantiate(explosion, other.gameObject.transform.position, Quaternion.identity);
             GameObject.Destroy(other.gameObject);

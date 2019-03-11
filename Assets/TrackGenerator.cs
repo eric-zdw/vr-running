@@ -16,6 +16,7 @@ public class TrackGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GenerateInitialDecorations();
         StartCoroutine(CheckPlayerDistance());
     }
 
@@ -59,5 +60,13 @@ public class TrackGenerator : MonoBehaviour
 
         int model = Random.Range(0, (decorations.Length - 1));
         Instantiate(decorations[model], decorLocation, Quaternion.identity);
+    }
+
+    void GenerateInitialDecorations() {
+        float distance = -1000f;
+        while (distance <= 0) {
+            GenerateDecoration(distance);
+            distance += 100f;
+        }
     }
 }
