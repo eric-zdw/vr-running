@@ -12,7 +12,7 @@ public class GameManagerScript : MonoBehaviour
     public bool gameOn;
     private float timer;    //used to measure how long heartrate has stayed consistent
 
-    //SerialPort sp = new SerialPort("COM3", 115200);
+    SerialPort sp = new SerialPort("COM3", 115200);
 
     // Start is called before the first frame update
     void Start()
