@@ -9,8 +9,13 @@ public class ControllerPointer : MonoBehaviour
     private UnityEngine.UI.Button button;
     private int layerMask;
     public GameObject pointerEnd;
+    public GameObject playerPlane;
+    private Rigidbody planeRigidbody;
+    public float velocityMultiplier;
+    public float newVelocity;
 
     private Valve.VR.SteamVR_Action_Boolean isInteracting;
+    private Valve.VR.InteractionSystem.VelocityEstimator velocityEstimator;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +27,10 @@ public class ControllerPointer : MonoBehaviour
         layerMask = ~(1 << 9);
 
         isInteracting = Valve.VR.SteamVR_Input.GetBooleanAction("default", "InteractUI");
+
+        velocityEstimator = GetComponent<Valve.VR.InteractionSystem.VelocityEstimator>();
+
+        planeRigidbody = playerPlane.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -61,7 +70,11 @@ public class ControllerPointer : MonoBehaviour
         if (isInteracting.lastStateUp == true)
             pointerEnd.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
-        GetControllerVelocity();
+        if (playerPlane != null) {
+            newVelocity = velocityEstimator.GetVelocityEstimate().magnitude * Time.deltaTime * velocityMultiplier;
+            Vector3 forceVector = new Vector3(0f, 0f, newVelocity);
+            planeRigidbody.AddForce(forceVector);
+        }
     }
 
     void CheckButton() {
@@ -70,10 +83,5 @@ public class ControllerPointer : MonoBehaviour
                 UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             }
         }
-    }
-
-
-    void GetControllerVelocity() {
-        print("controller velocity: " + transform);
     }
 }
