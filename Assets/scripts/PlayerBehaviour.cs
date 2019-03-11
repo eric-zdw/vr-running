@@ -14,20 +14,29 @@ public class PlayerBehaviour : MonoBehaviour
     public float heartrateMultiplier;
     public float tiltMultiplier;
     public float heartrategap;  //variable that should represent how far above initial heartrate player is. Should modify to ensure reasonable speed increase
+    private bool managerFound = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        managerscript = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+        if (GameObject.Find("GameManager") != null) {
+            managerscript = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+            managerFound = true;
+        }
+        else
+            print("WARNING: Manager script was not found! Heartbeat data will be ignored.");
+            
     }
 
     // Update is called once per frame
     void Update()
     {
-        heartrategap = managerscript.currentRate - managerscript.initialRate;
-        if (heartrategap < 0)
-            heartrategap = 0;
+        if (managerFound) {
+            heartrategap = managerscript.currentRate - managerscript.initialRate;
+            if (heartrategap < 0)
+                heartrategap = 0;
+        }
 
         GainVelocity();
 
