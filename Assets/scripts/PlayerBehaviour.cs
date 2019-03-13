@@ -16,6 +16,9 @@ public class PlayerBehaviour : MonoBehaviour
     public float heartrategap;  //variable that should represent how far above initial heartrate player is. Should modify to ensure reasonable speed increase
     private bool managerFound = false;
 
+    public Valve.VR.SteamVR_Behaviour_Pose pose;
+    public float controllerMultiplier = 5f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +56,8 @@ public class PlayerBehaviour : MonoBehaviour
 
         transform.GetComponent<Rigidbody>().AddForce((transform.TransformDirection(new Vector3(0, 0, velocityInput)) * Time.deltaTime * velocityMultiplier) 
                                                         + (transform.TransformDirection(new Vector3(0, 0, heartrategap)) * Time.deltaTime * velocityInput));
+
+        transform.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0f, pose.GetVelocity().magnitude * controllerMultiplier));
 
         //transform.GetComponent<Rigidbody>().velocity += (transform.TransformDirection(new Vector3(0, 0, velocityInput)) * Time.deltaTime * velocityMultiplier) + (transform.TransformDirection(new Vector3(0, 0, heartrategap)) * Time.deltaTime * velocityInput);
     }

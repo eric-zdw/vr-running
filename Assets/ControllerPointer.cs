@@ -11,6 +11,7 @@ public class ControllerPointer : MonoBehaviour
     public GameObject pointerEnd;
 
     private Valve.VR.SteamVR_Action_Boolean isInteracting;
+    private Valve.VR.SteamVR_Behaviour_Pose behaviourPose;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class ControllerPointer : MonoBehaviour
         layerMask = ~(1 << 9);
 
         isInteracting = Valve.VR.SteamVR_Input.GetBooleanAction("default", "InteractUI");
+        behaviourPose = GetComponent<Valve.VR.SteamVR_Behaviour_Pose>();
     }
 
     // Update is called once per frame
@@ -61,7 +63,8 @@ public class ControllerPointer : MonoBehaviour
         if (isInteracting.lastStateUp == true)
             pointerEnd.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
-        GetControllerVelocity();
+        float newVelocity = behaviourPose.GetVelocity().magnitude;
+        print("Velocity: " + newVelocity);
     }
 
     void CheckButton() {
@@ -72,8 +75,4 @@ public class ControllerPointer : MonoBehaviour
         }
     }
 
-
-    void GetControllerVelocity() {
-        print("controller velocity: " + transform);
-    }
 }
