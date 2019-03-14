@@ -16,6 +16,7 @@ public class DistanceMeter : MonoBehaviour
     void Start()
     {
         textMesh = GetComponent<TextMesh>();
+        StartCoroutine(FlashRed());
     }
 
     // Update is called once per frame
@@ -25,5 +26,32 @@ public class DistanceMeter : MonoBehaviour
 
         // round to one significant digit
         textMesh.text = distance.ToString("F1");
+    }
+
+    IEnumerator FlashRed()
+    {
+        bool isRed = false;
+        while (true)
+        {
+            yield return new WaitForSeconds(0.25f);
+            if (distance < 50f)
+            {
+                if (!isRed)
+                {
+                    textMesh.color = Color.red;
+                    isRed = true;
+                }
+                else
+                {
+                    textMesh.color = Color.black;
+                    isRed = false;
+                }
+            }
+            else
+            {
+                textMesh.color = Color.black;
+                isRed = false;
+            }
+        }
     }
 }

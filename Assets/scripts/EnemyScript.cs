@@ -11,9 +11,10 @@ public class EnemyScript : MonoBehaviour
     public float velocityMultiplier;
     public float directionMultiplier;
     public float tiltMultiplier;
+    public float difficultyFactor = 10f;
 
     public GameObject explosion;
-    private bool started = false;
+    public bool started = false;
     public bool ended = false;
     private float timer = 0;
 
@@ -21,14 +22,17 @@ public class EnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(WaitToStart());
+        //StartCoroutine(WaitToStart());
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (started)
+        {
             GainVelocity();
+            velocityMultiplier += difficultyFactor * Time.deltaTime;
+        }
         if (ended)
         {
             if(timer < 4)
@@ -40,7 +44,6 @@ public class EnemyScript : MonoBehaviour
                 SceneManager.LoadScene("MainMenu");
             }
         }
-
     }
 
     void GainVelocity()
