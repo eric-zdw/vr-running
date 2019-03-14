@@ -13,17 +13,20 @@ public class EnemyScript : MonoBehaviour
     public float tiltMultiplier;
 
     public GameObject explosion;
+    private bool started = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(WaitToStart());
     }
 
     // Update is called once per frame
     void Update()
     {
-        GainVelocity();
+        if (started)
+            GainVelocity();
 
     }
 
@@ -44,5 +47,11 @@ public class EnemyScript : MonoBehaviour
             GameObject.Destroy(other.gameObject);
             //SceneManager.LoadScene("gameMenu");
         }
+    }
+
+    IEnumerator WaitToStart()
+    {
+        yield return new WaitForSeconds(10f);
+        started = true;
     }
 }

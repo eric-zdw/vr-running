@@ -55,7 +55,7 @@ public class PlayerBehaviour : MonoBehaviour
         //transform.localRotation = GvrControllerInput.Orientation;
 
         transform.GetComponent<Rigidbody>().AddForce((transform.TransformDirection(new Vector3(0, 0, velocityInput)) * Time.deltaTime * velocityMultiplier) 
-                                                        + (transform.TransformDirection(new Vector3(0, 0, heartrategap)) * Time.deltaTime * velocityInput));
+                                                        + (transform.TransformDirection(new Vector3(0, 0, heartrategap)) * Time.deltaTime * heartrateMultiplier));
 
         //transform.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0f, pose.GetVelocity().magnitude * controllerMultiplier));
 

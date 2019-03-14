@@ -6729,6 +6729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f660ea08599c304a91b0b065170aff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heartrategap: 0
   pose: {fileID: 200505825}
 --- !u!1 &1482897277
 GameObject:
@@ -7862,6 +7863,11 @@ PrefabInstance:
       propertyPath: pose
       value: 
       objectReference: {fileID: 200505825}
+    - target: {fileID: 7853486384687998141, guid: d543e2ffabf88cc499ce6acd24dd98cf,
+        type: 3}
+      propertyPath: heartrateMultiplier
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 966825351, guid: d543e2ffabf88cc499ce6acd24dd98cf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

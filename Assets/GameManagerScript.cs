@@ -19,8 +19,8 @@ public class GameManagerScript : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         timer = 0;
-        /*sp.Open();
-        sp.ReadTimeout = 1;*/
+        sp.Open();
+        sp.ReadTimeout = 1;
         gameOn = false;
     }
 
@@ -29,19 +29,20 @@ public class GameManagerScript : MonoBehaviour
     {
         if (!gameOn)    //game not started, measure heart rate
         {
-            //if (sp.IsOpen)
-            //{
+            if (sp.IsOpen)
+            {
                 try
                 {
                     oldInitialRate = initialRate;
-                initialRate = int.Parse(sp.ReadLine());
+                    initialRate = int.Parse(sp.ReadLine());
+                    Debug.Log(timer);
                     if (((initialRate - oldInitialRate) > 10) || ((oldInitialRate - initialRate) > 10) || initialRate < 30 || initialRate > 120)  //check both for inconsistency and invalidity in heartrate
                     {
                         timer = 0;
                     }
                     else
                     {
-                        timer += Time.deltaTime;
+                        timer += 1;
                     }
                     if (timer > 5)
                     {
@@ -55,23 +56,24 @@ public class GameManagerScript : MonoBehaviour
                 {
 
                 }
-                Debug.Log(initialRate);
+                //Debug.Log(initialRate);
             }
-            else            //game started, measure current heart rate
+        }
+        else            //game started, measure current heart rate
+        {
+            if (sp.IsOpen)
             {
-                //if (sp.IsOpen)
-                //{
-                    try
-                    {
-                  //      currentRate = int.Parse(sp.ReadLine());
-                    }
-                    catch (System.Exception)
-                    {
+                try
+                {
+                    currentRate = int.Parse(sp.ReadLine());
+                }
+                catch (System.Exception)
+                {
 
-                    }
                 }
             }
         }
+        }
 
-   // }
+    }
 //}
