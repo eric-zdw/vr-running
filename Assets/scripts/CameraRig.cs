@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraRig : MonoBehaviour {
 
@@ -19,6 +20,9 @@ public class CameraRig : MonoBehaviour {
         // test OpenVR controller detection
         StartCoroutine(CheckControllers());
         transform.rotation = Quaternion.Euler(rotationOffset);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+        target = GameObject.Find("MenuContainer");
     }
 
     // Update is called once per frame
@@ -36,12 +40,29 @@ public class CameraRig : MonoBehaviour {
 
     IEnumerator CheckControllers() {
         while (true) {
-            print("testing...");
+            //print("testing...");
             controllerList = UnityEngine.Input.GetJoystickNames();
             for (int i = 0; i < controllerList.Length; i++) {
-                print(controllerList[i]);
+                //print(controllerList[i]);
             }
             yield return new WaitForSeconds(1f);
+        }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        if (scene.name == "SampleScene")
+        {
+            target = GameObject.Find("PlayerPlane");
+        }
+        else if (scene.name == "InitialMeasure")
+        {
+            target = GameObject.Find("MenuContainer");
+        }
+        else if (scene.name == "MainMenu")
+        {
+            target = GameObject.Find("MenuContainer");
         }
     }
 }

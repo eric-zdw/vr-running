@@ -64,7 +64,7 @@ public class ControllerPointer : MonoBehaviour
             pointerEnd.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
         float newVelocity = behaviourPose.GetVelocity().magnitude;
-        print("Velocity: " + newVelocity);
+        //print("Velocity: " + newVelocity);
     }
 
     void CheckButton() {
