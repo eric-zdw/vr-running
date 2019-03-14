@@ -10,7 +10,7 @@ public class Cleanup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerModel = GameObject.FindGameObjectWithTag("PlayerModel");
+        playerModel = GameObject.Find("PlayerPlane");
         StartCoroutine(CheckDestroy());
     }
 

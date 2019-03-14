@@ -47,9 +47,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     void GainVelocity()
     {
-        if (Input.anyKey)   //REPLACE THIS with vr controller motion 
-            velocityInput = 1; 
-        else 
+        //if (Input.anyKey)   //REPLACE THIS with vr controller motion 
+          //  velocityInput = 1; 
+        //else 
             velocityInput = 0;
 
         //transform.localRotation = GvrControllerInput.Orientation;

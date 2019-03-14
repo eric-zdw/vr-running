@@ -14,6 +14,8 @@ public class EnemyScript : MonoBehaviour
 
     public GameObject explosion;
     private bool started = false;
+    public bool ended = false;
+    private float timer = 0;
 
 
     // Start is called before the first frame update
@@ -27,6 +29,17 @@ public class EnemyScript : MonoBehaviour
     {
         if (started)
             GainVelocity();
+        if (ended)
+        {
+            if(timer < 4)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
 
     }
 
@@ -44,8 +57,11 @@ public class EnemyScript : MonoBehaviour
         if (other.gameObject.name == "PlayerPlane")
         {
             Instantiate(explosion, other.gameObject.transform.position, Quaternion.identity);
-            GameObject.Destroy(other.gameObject);
-            //SceneManager.LoadScene("gameMenu");
+            //GameObject.Destroy(other.gameObject);
+            GameObject.Destroy(GameObject.Find("playermodel"));
+            GameObject.Destroy(GameObject.Find("DistanceWidget"));
+            GameObject.Destroy(GameObject.Find("BPMWidget"));
+            ended = true;
         }
     }
 

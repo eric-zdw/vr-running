@@ -4889,6 +4889,7 @@ GameObject:
   - component: {fileID: 266024594}
   - component: {fileID: 266024593}
   - component: {fileID: 266024596}
+  - component: {fileID: 266024597}
   m_Layer: 5
   m_Name: PlayGameButton
   m_TagString: PlayButton
@@ -5008,6 +5009,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 200, y: 50, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &266024597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266024591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f9ebd6224411c448a4051284ca7e089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &435512703
 GameObject:
   m_ObjectHideFlags: 0
@@ -5237,7 +5250,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Calibrate Heartbeat Sensor
+  m_Text: Exit Game
 --- !u!222 &662068801
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5543,8 +5556,9 @@ GameObject:
   - component: {fileID: 1399134012}
   - component: {fileID: 1399134011}
   - component: {fileID: 1399134010}
+  - component: {fileID: 1399134013}
   m_Layer: 5
-  m_Name: CalibrateButton
+  m_Name: ExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5649,6 +5663,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399134008}
   m_CullTransparentMesh: 0
+--- !u!114 &1399134013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399134008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb47be2467916f7478e2fa1efb13a9e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1446536182
 GameObject:
   m_ObjectHideFlags: 0

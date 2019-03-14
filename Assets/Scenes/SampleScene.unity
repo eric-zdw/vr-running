@@ -350,12 +350,6 @@ Transform:
   m_Father: {fileID: 1582825338}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &346148342 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7853486384066203635, guid: d543e2ffabf88cc499ce6acd24dd98cf,
-    type: 3}
-  m_PrefabInstance: {fileID: 7853486383716064560}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &357092851
 GameObject:
   m_ObjectHideFlags: 0
@@ -6916,6 +6910,7 @@ MonoBehaviour:
   tiltMultiplier: 60
   explosion: {fileID: 889391511187451955, guid: 3e3635c8dcc956844b2f9046f38eb93a,
     type: 3}
+  ended: 0
 --- !u!54 &1582825336
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7561,8 +7556,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b5376950de6071448b909d117bfdd07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 346148342}
+  player: {fileID: 2054338951}
   track: {fileID: 8580592593010749941, guid: 12af0b67099ad7e4786f9447fa67af81, type: 3}
+  enemy: {fileID: 0}
   decorations:
   - {fileID: 4659455234606009962, guid: fab0a21d4733f7343b5d017b089a40c7, type: 3}
 --- !u!4 &2025594010

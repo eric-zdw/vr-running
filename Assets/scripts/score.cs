@@ -10,9 +10,10 @@ public class score : MonoBehaviour
     void Start()
     {
         managerscript = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+        scoreText = this.GetComponent<Text>();
     }
     void Update()
     {
-        scoreText.text = managerscript.currentRate.ToString();
+        scoreText.text = managerscript.initialRate.ToString();
     }
 }

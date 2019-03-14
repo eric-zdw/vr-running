@@ -24,15 +24,14 @@ public class CameraRig : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
+            Vector3 newPosition = target.transform.position
+                                - target.transform.TransformDirection(Vector3.forward) * followDistance
+                                + Vector3.up * followHeight;
+            transform.position = Vector3.Lerp(transform.position, newPosition, smoothnessFactor);
+            //transform.position = newPosition;
 
-        Vector3 newPosition = target.transform.position 
-                            - target.transform.TransformDirection(Vector3.forward) * followDistance
-                            + Vector3.up * followHeight;
-        transform.position = Vector3.Lerp(transform.position, newPosition, smoothnessFactor);
-        //transform.position = newPosition;
-
-        // Enable if you want camera tilt.
-        //transform.LookAt(target.transform);
+            // Enable if you want camera tilt.
+            //transform.LookAt(target.transform);
     }
 
     IEnumerator CheckControllers() {

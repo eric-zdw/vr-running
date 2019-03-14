@@ -7,6 +7,7 @@ public class TrackGenerator : MonoBehaviour
 
     public GameObject player;
     public GameObject track;
+    public EnemyScript enemy;
 
     private float playerDistance;
     private float nextGoal = 100f;
@@ -18,6 +19,7 @@ public class TrackGenerator : MonoBehaviour
     {
         GenerateInitialDecorations();
         StartCoroutine(CheckPlayerDistance());
+        
     }
 
     // Update is called once per framez
@@ -26,25 +28,27 @@ public class TrackGenerator : MonoBehaviour
     }
 
     IEnumerator CheckPlayerDistance() {
-        while (true) {
-            playerDistance = player.transform.position.z;
+        while (true)
+        {
+                playerDistance = player.transform.position.z;
 
-            if (playerDistance > nextGoal) {
-                Vector3 trackLocation = new Vector3(0, 0, nextGoal + 500f);
+                if (playerDistance > nextGoal)
+                {
+                    Vector3 trackLocation = new Vector3(0, 0, nextGoal + 500f);
 
-                Instantiate(track, trackLocation, Quaternion.identity);
+                    Instantiate(track, trackLocation, Quaternion.identity);
 
-                int numberOfDecors = Random.Range(1, 5);
-                for (int i = 0; i < numberOfDecors; i++) {
-                    GenerateDecoration(nextGoal);
+                    int numberOfDecors = Random.Range(1, 5);
+                    for (int i = 0; i < numberOfDecors; i++)
+                    {
+                        GenerateDecoration(nextGoal);
+                    }
+
+                    nextGoal += 100f;
                 }
 
-                nextGoal += 100f;
-            }
-
-            yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.5f);
         }
-        
     }
 
     void GenerateDecoration(float zDistance) {
