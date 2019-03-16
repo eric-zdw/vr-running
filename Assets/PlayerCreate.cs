@@ -20,7 +20,7 @@ public class PlayerCreate : MonoBehaviour
 
     IEnumerator WaitForPlayer()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         if (!GameObject.FindGameObjectWithTag("Player"))
         {
             Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);

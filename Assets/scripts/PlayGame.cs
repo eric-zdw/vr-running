@@ -12,9 +12,12 @@ public class PlayGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(WaitForPlayer());
+
         myButton = GetComponent<Button>(); // <-- you get access to the button component here
 
         myButton.onClick.AddListener(() => { clicked(); });
+        
     }
 
     // Update is called once per frame
@@ -25,7 +28,13 @@ public class PlayGame : MonoBehaviour
 
     void clicked()
     {
-        Destroy(player);
-        SceneManager.LoadScene("InitialMeasure");
+        SceneManager.LoadScene(2);
+    }
+
+    IEnumerator WaitForPlayer()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 }

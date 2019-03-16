@@ -3161,7 +3161,7 @@ PrefabInstance:
     - target: {fileID: 7853486384687998141, guid: d543e2ffabf88cc499ce6acd24dd98cf,
         type: 3}
       propertyPath: velocityMultiplier
-      value: 500
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7853486384687998141, guid: d543e2ffabf88cc499ce6acd24dd98cf,
         type: 3}
@@ -3171,7 +3171,7 @@ PrefabInstance:
     - target: {fileID: 7853486384687998141, guid: d543e2ffabf88cc499ce6acd24dd98cf,
         type: 3}
       propertyPath: heartrateMultiplier
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7853486384066203635, guid: d543e2ffabf88cc499ce6acd24dd98cf,
         type: 3}
