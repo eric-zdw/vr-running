@@ -41,6 +41,7 @@ public class EnemyScript : MonoBehaviour
             }
             else
             {
+                GameObject.Destroy(GameObject.Find("GameManager"));
                 SceneManager.LoadScene("MainMenu");
             }
         }

@@ -9,6 +9,8 @@ public class GameManagerScript : MonoBehaviour
     public int initialRate; //heartrate measured before start of game
     private int oldInitialRate; //previous heartrate measured, used to check consistency
     public int currentRate; //heartrate measured moment to moment
+    public int[] heartrateArray;
+    public int arraySum;
     public bool gameOn;
     public bool gameover;
     private float timer;    //used to measure how long heartrate has stayed consistent
@@ -46,7 +48,7 @@ public class GameManagerScript : MonoBehaviour
                     {
                         timer += 1;
                     }
-                    if (timer > 5)
+                    if (timer > 30)
                     {
 
                         gameOn = true;
@@ -67,7 +69,15 @@ public class GameManagerScript : MonoBehaviour
             {
                 try
                 {
-                currentRate = int.Parse(sp.ReadLine());
+                    arraySum = 0;
+                    for (int x = 4; x > 0; x--)
+                    {
+                        heartrateArray[x] = heartrateArray[x - 1];
+                        arraySum += heartrateArray[x];
+                    }
+                    heartrateArray[0] = int.Parse(sp.ReadLine());
+                    arraySum += heartrateArray[0];
+                    currentRate = arraySum / 5;
                 //currentRate = 60;
                 }
                 catch (System.Exception)

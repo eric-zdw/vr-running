@@ -1,20 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour
 {
 
     public GameObject playermodel;
+    public TextMesh difficultyText;
     private GameManagerScript managerscript;
     public float velocityInput;
     public float directionInput;
     public float velocityMultiplier;
     public float directionMultiplier;
-    public float heartrateMultiplier;
+    public float heartrateMultiplier = 40;
     public float tiltMultiplier;
     public float heartrategap;  //variable that should represent how far above initial heartrate player is. Should modify to ensure reasonable speed increase
     private bool managerFound = false;
+    public float difficultyTimer = 0;
 
     public Valve.VR.SteamVR_Behaviour_Pose pose;
     public float controllerMultiplier = 5f;
@@ -32,7 +35,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
         else
             print("WARNING: Manager script was not found! Heartbeat data will be ignored.");
-            
+        difficultyText = GameObject.Find("DifficultyText").GetComponent<TextMesh>();
     }
 
     // Update is called once per frame
@@ -45,7 +48,13 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         GainVelocity();
-
+        difficultyTimer += Time.deltaTime;
+        if (difficultyTimer > 30 && heartrateMultiplier > 20)
+        {
+            difficultyTimer = 0;
+            heartrateMultiplier -= 4;
+            
+        }
     }
 
     void GainVelocity()
@@ -59,8 +68,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (gameStarted)
         {
-            transform.GetComponent<Rigidbody>().AddForce((transform.TransformDirection(new Vector3(0, 0, velocityInput)) * Time.deltaTime * velocityMultiplier)
-                                                + (transform.TransformDirection(new Vector3(0, 0, heartrategap)) * Time.deltaTime * heartrateMultiplier));
+            transform.GetComponent<Rigidbody>().AddForce((transform.TransformDirection(new Vector3(0, 0, heartrategap)) * Time.deltaTime * heartrateMultiplier));
         }
 
         //transform.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0f, pose.GetVelocity().magnitude * controllerMultiplier));
