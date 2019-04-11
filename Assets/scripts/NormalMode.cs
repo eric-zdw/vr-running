@@ -31,8 +31,12 @@ public class NormalMode : MonoBehaviour
         SteamVR_Fade.Start(Color.clear, 0f);
         //set and start fade to
         SteamVR_Fade.Start(Color.black, 1f);
+        Invoke("changeScene", 1f);
         difficultytracker.GetComponent<DifficultyTracker>().difficulty = "normal";
-        SceneManager.LoadScene(2);
     }
 
+    void changeScene()
+    {
+        SceneManager.LoadScene(2);
+    }
 }

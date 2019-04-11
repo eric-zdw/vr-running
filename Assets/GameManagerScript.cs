@@ -74,11 +74,8 @@ public class GameManagerScript : MonoBehaviour
                         //set and start fade to
                         SteamVR_Fade.Start(Color.black, 1.5f);
                         
-                        SceneManager.LoadScene("SampleScene");
-                        //set start color
-                        SteamVR_Fade.Start(Color.clear, 0f);
-                        //set and start fade to
-                        SteamVR_Fade.Start(Color.black, 1.5f);
+                        Invoke("ChangeScene", 1.5f);
+
                     }
 
                 }
@@ -113,6 +110,15 @@ public class GameManagerScript : MonoBehaviour
             }
         }
         }
+
+    void changeScene()
+    {
+        SceneManager.LoadScene("SampleScene");
+        //set start color
+        SteamVR_Fade.Start(Color.clear, 0f);
+        //set and start fade to
+        SteamVR_Fade.Start(Color.black, 1.5f);
+    }
 
     }
 //}

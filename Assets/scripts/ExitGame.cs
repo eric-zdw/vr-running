@@ -26,6 +26,6 @@ public class ExitGame : MonoBehaviour
         SteamVR_Fade.Start(Color.clear, 0f);
         //set and start fade to
         SteamVR_Fade.Start(Color.black, 2f);
-        Application.Quit();
+        Invoke("Application.Quit", 2f);
     }
 }

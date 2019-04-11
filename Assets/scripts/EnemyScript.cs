@@ -43,7 +43,7 @@ public class EnemyScript : MonoBehaviour
         }
         if (ended)
         {
-            if(timer < 4)
+            if(timer < 2)
             {
                 timer += Time.deltaTime;
             }
@@ -53,8 +53,7 @@ public class EnemyScript : MonoBehaviour
                 SteamVR_Fade.Start(Color.clear, 0f);
                 //set and start fade to
                 SteamVR_Fade.Start(Color.black, 2f);
-                GameObject.Destroy(GameObject.Find("GameManager"));
-                SceneManager.LoadScene("MainMenu");
+                Invoke("changeScene", 2f);
             }
         }
     }
@@ -85,5 +84,11 @@ public class EnemyScript : MonoBehaviour
     {
         yield return new WaitForSeconds(10f);
         started = true;
+    }
+    
+    void changeScene()
+    {
+        GameObject.Destroy(GameObject.Find("GameManager"));
+        SceneManager.LoadScene("MainMenu");
     }
 }

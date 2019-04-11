@@ -38,7 +38,7 @@ public class PlayGame : MonoBehaviour
         SteamVR_Fade.Start(Color.clear, 0f);
         //set and start fade to
         SteamVR_Fade.Start(Color.black, 2f);
-        SceneManager.LoadScene("DifficultySelect");
+        Invoke("changeScene", 2f);
     }
 
     IEnumerator WaitForPlayer()
@@ -46,5 +46,10 @@ public class PlayGame : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    void changeScene()
+    {
+        SceneManager.LoadScene("DifficultySelect");
     }
 }
