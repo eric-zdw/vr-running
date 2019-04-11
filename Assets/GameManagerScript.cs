@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.IO.Ports;
 using UnityEngine.SceneManagement;
+using Valve.VR;
 
 public class GameManagerScript : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class GameManagerScript : MonoBehaviour
     public bool gameOn;
     public bool gameover;
     private float timer;    //used to measure how long heartrate has stayed consistent
+    private Text warning;
 
     SerialPort sp = new SerialPort("COM3", 115200);
 
@@ -21,10 +24,12 @@ public class GameManagerScript : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+
         timer = 0;
         sp.Open();
         sp.ReadTimeout = 1;
         gameOn = false;
+        warning = GameObject.Find("Warning").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -43,16 +48,37 @@ public class GameManagerScript : MonoBehaviour
                     if (((initialRate - oldInitialRate) > 10) || ((oldInitialRate - initialRate) > 10) || initialRate < 30 || initialRate > 120)  //check both for inconsistency and invalidity in heartrate
                     {
                         timer = 0;
+                        warning.text = "";
                     }
                     else
                     {
                         timer += 1;
+                        if (initialRate < 30)
+                        {
+                            warning.text = "Heartrate too low!";
+                        }
+                        else if (initialRate > 120)
+                        {
+                            warning.text = "Heartrate too high!";
+                        }
+                        else
+                        {
+                            warning.text = "";
+                        }
                     }
                     if (timer > 30)
                     {
-
                         gameOn = true;
+                        //set start color
+                        SteamVR_Fade.Start(Color.clear, 0f);
+                        //set and start fade to
+                        SteamVR_Fade.Start(Color.black, 1.5f);
+                        
                         SceneManager.LoadScene("SampleScene");
+                        //set start color
+                        SteamVR_Fade.Start(Color.clear, 0f);
+                        //set and start fade to
+                        SteamVR_Fade.Start(Color.black, 1.5f);
                     }
 
                 }

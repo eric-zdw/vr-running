@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Valve.VR;
 
 public class PlayGame : MonoBehaviour
 {
@@ -12,12 +13,17 @@ public class PlayGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //set start color
+        SteamVR_Fade.Start(Color.black, 0f);
+
+
         StartCoroutine(WaitForPlayer());
 
         myButton = GetComponent<Button>(); // <-- you get access to the button component here
 
         myButton.onClick.AddListener(() => { clicked(); });
-        
+        //set and start fade to
+        SteamVR_Fade.Start(Color.clear, 2f);
     }
 
     // Update is called once per frame
@@ -28,7 +34,11 @@ public class PlayGame : MonoBehaviour
 
     void clicked()
     {
-        SceneManager.LoadScene(2);
+        //set start color
+        SteamVR_Fade.Start(Color.clear, 0f);
+        //set and start fade to
+        SteamVR_Fade.Start(Color.black, 2f);
+        SceneManager.LoadScene("DifficultySelect");
     }
 
     IEnumerator WaitForPlayer()

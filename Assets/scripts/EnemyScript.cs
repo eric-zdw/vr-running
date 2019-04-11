@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Valve.VR;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class EnemyScript : MonoBehaviour
     public float directionMultiplier;
     public float tiltMultiplier;
     public float difficultyFactor = 10f;
+    public string difficulty;
 
     public GameObject explosion;
     public bool started = false;
@@ -23,6 +25,12 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         //StartCoroutine(WaitToStart());
+        difficulty = GameObject.Find("DifficultyTracker").GetComponent<DifficultyTracker>().difficulty;
+        GameObject.Destroy(GameObject.Find("DifficultyTracker"));
+        if (difficulty == "easy")
+        {
+            difficultyFactor = 7f;
+        }
     }
 
     // Update is called once per frame
@@ -41,6 +49,10 @@ public class EnemyScript : MonoBehaviour
             }
             else
             {
+                //set start color
+                SteamVR_Fade.Start(Color.clear, 0f);
+                //set and start fade to
+                SteamVR_Fade.Start(Color.black, 2f);
                 GameObject.Destroy(GameObject.Find("GameManager"));
                 SceneManager.LoadScene("MainMenu");
             }

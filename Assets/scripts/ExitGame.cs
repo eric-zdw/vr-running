@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Valve.VR;
 
 public class ExitGame : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class ExitGame : MonoBehaviour
 
     void clicked()
     {
+        SteamVR_Fade.Start(Color.clear, 0f);
+        //set and start fade to
+        SteamVR_Fade.Start(Color.black, 2f);
         Application.Quit();
     }
 }
